@@ -5,7 +5,7 @@ extension WindowInfoDict : AlfredItem {
     var autocomplete : String { return self.name };
     var title : String { return self.name };
     var subtitle : String { return "Process: \(self.processName) | App name: \(self.processName)" };
-    var arg: AlfredArg { return AlfredArg(arg1:self.processName, arg2:"\(self.tabIndex)", arg3:self.title) }
+    var arg: AlfredArg { return AlfredArg(arg1:self.processName, arg2:"\(self.tabIndex)", arg3:self.title, arg4:"\(self.number)") }
 }
 
 extension BrowserTab : AlfredItem {

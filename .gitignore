@@ -3,3 +3,7 @@ EnumWindows.xcodeproj/xcuserdata/
 *.un~
 EnumWindows/EnumWindows
 xcuserdata/
+build
+SwiftWindowSwitcher.alfredworkflow
+AlfredWorkflow/EnumWindows
+.DS_Store

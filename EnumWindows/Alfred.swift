@@ -4,15 +4,17 @@ struct AlfredArg {
     private let arg1 : String
     private let arg2 : String
     private let arg3 : String
-    
-    init(arg1: String, arg2: String, arg3: String) {
+    private let arg4 : String
+
+    init(arg1: String, arg2: String, arg3: String, arg4: String = "") {
         self.arg1 = arg1
         self.arg2 = arg2
         self.arg3 = arg3
+        self.arg4 = arg4
     }
-    
+
     var serialized : String {
-        return "\(self.arg1)|||||\(self.arg2)|||||\(self.arg3)"
+        return "\(self.arg1)|||||\(self.arg2)|||||\(self.arg3)|||||\(self.arg4)"
     }
 }
 

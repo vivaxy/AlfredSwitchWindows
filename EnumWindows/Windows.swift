@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 class WindowInfoDict : Searchable, ProcessNameProtocol {
     private let windowInfoDict : Dictionary<NSObject, AnyObject>;
@@ -101,19 +102,19 @@ struct Windows {
 
     static var all : [WindowInfoDict] {
         get {
-            guard let wl = CGWindowListCopyWindowInfo([.optionOnScreenOnly, .excludeDesktopElements], kCGNullWindowID) else {
+            guard let wl = CGWindowListCopyWindowInfo([.optionAll, .excludeDesktopElements], kCGNullWindowID) else {
                 return []
             }
-            
+
             return (0..<CFArrayGetCount(wl)).flatMap { (i : Int) -> [WindowInfoDict] in
                 guard let windowInfoRef = CFArrayGetValueAtIndex(wl, i) else {
                     return []
                 }
-                
+
                 let wi = WindowInfoDict(rawDict: windowInfoRef)
-                
+
                 // We don't want to clutter our output with unnecessary windows that we can't switch to anyway.
-                guard !wi.name.isEmpty && !wi.isProbablyMenubarItem && wi.isVisible else {
+                guard !wi.name.isEmpty && !wi.isProbablyMenubarItem && wi.isVisible && !wi.bounds.isEmpty else {
                     return []
                 }
                 
